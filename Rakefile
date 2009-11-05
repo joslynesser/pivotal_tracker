@@ -5,12 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "pivotal_tracker"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Simple ruby wrapper for the Pivotal Tracker API}
     gem.email = "joslyn.esser@gmail.com"
     gem.homepage = "http://github.com/joslynesser/pivotal_tracker"
     gem.authors = ["Joslyn Esser"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "fakeweb", ">= 1.2.7"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

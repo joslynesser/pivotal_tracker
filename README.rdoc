@@ -1,6 +1,6 @@
 = pivotal_tracker
 
-Description goes here.
+This is a simple ruby wrapper for the Pivotal Tracker API.
 
 == Note on Patches/Pull Requests
  

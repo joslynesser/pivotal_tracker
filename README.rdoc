@@ -1,12 +1,46 @@
 = pivotal_tracker
 
-This is a simple ruby wrapper for the Pivotal Tracker API.
+This is a simple ruby wrapper for the Pivotal Tracker V2 API utilizing HTTParty and Crack::XML.
+
+== Setup
+
+Make sure you have gemcutter
+  sudo gem install gemcutter
+  gem tumble
+  
+Install the gem
+  sudo gem install pivotal_tracker
+
+== Usage
+
+Create a PivotalTracker object with your API key:
+  tracker = PivotalTracker.new('API_KEY')
+  
+Use any of the currently implemented methods and access them like access the resources returned.
+Notice that all data returned is parsed and built into Mash objects/arrays for you:
+  projects = tracker.get_all_projects
+  projects.first.memberships.first.person.name
+  => "Joslyn Esser"
+  
+== Currently implemented methods (More to come!)
+
+* get_all_activities 
+* get_all_project_activities(project_id)
+* get_all_projects
+* get_project(project_id)
+* create_project(name, options = {})
+* get_all_project_memberships(project_id)
+* get_project_membership(project_id, membership_id)
+* add_project_membership(project_id, role, email, options = {})
+* remove_project_membership(project_id, membership_id)
+* get_all_project_iterations(project_id)
+* get_all_project_stories(project_id)
 
 == Note on Patches/Pull Requests
  
 * Fork the project.
 * Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
+* Add specs for it. This is important so I don't break it in a
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but

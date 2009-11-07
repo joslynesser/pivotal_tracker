@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "pivotal_tracker"
-    gem.summary = %Q{Simple ruby wrapper for the Pivotal Tracker API}
+    gem.summary = %Q{Ruby wrapper for the Pivotal Tracker V2 API utilizing HTTParty and Crack XML parsing}
     gem.email = "joslyn.esser@gmail.com"
     gem.homepage = "http://github.com/joslynesser/pivotal_tracker"
     gem.authors = ["Joslyn Esser"]
@@ -14,6 +14,7 @@ begin
     gem.add_development_dependency "fakeweb", ">= 1.2.7"
     
     gem.add_dependency "httparty", ">= 0.4.5"
+    gem.add_dependency "mash", ">= 0.0.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

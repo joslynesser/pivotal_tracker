@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<memberships type="array">
+  <membership>
+    <id>1</id>
+    <person>
+      <email>picard@earth.ufp</email>
+      <name>Jean-Luc Picard</name>
+      <initials>jlp</initials>
+    </person>
+    <role>Owner</role>
+    <project>
+      <id>1</id>
+      <name>Warp Engine Upgrades</name>
+    </project>
+  </membership>
+  <membership>
+    <id>2</id>
+    <person>
+      <email>jadzia@trill.ufp</email>
+      <name>Jadzia Dax</name>
+      <initials>JD</initials>
+    </person>
+    <role>Member</role>
+    <project>
+      <id>1</id>
+      <name>Warp Engine Upgrades</name>
+    </project>
+  </membership>
+</memberships>

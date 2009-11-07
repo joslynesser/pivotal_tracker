@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iterations type="array">
+  <iteration>
+    <id type="integer">1</id>
+    <number type="integer">1</number>
+    <start type="datetime">2009/03/16 00:00:00 UTC</start>
+    <finish type="datetime">2009/03/23 00:00:00 UTC</finish>
+    <stories>
+      <story>
+        <id type="integer">1</id>
+        <story_type>feature</story_type>
+        <url>STORY_URL</url>
+        <estimate type="integer">2</estimate>
+        <current_state>accepted</current_state>
+        <description>Windoze Save Dialog thingy</description>
+        <name>The Save Dialog</name>
+        <requested_by>Dana Deer</requested_by>
+        <owned_by>Rob</owned_by>
+        <created_at type="datetime">2009/03/16 16:55:04 UTC</created_at>
+        <accepted_at type="datetime">2009/03/19 19:00:00 UTC</accepted_at>
+      </story>
+    </stories>
+  </iteration>
+</iterations>

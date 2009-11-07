@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story>
+  <id type="integer">2751</id>
+  <story_type>feature</story_type>
+  <url>http://www.pivotaltracker.com/story/show/2751</url>
+  <estimate type="integer">-1</estimate>
+  <current_state>unscheduled</current_state>
+  <description></description>
+  <name>Fire torpedoes</name>
+  <requested_by>James Kirk</requested_by>
+  <created_at type="datetime">2008/12/10 00:00:00 UTC</created_at>
+</story>

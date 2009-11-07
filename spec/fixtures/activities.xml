@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activities type="array">
+  <activity>
+    <id type="integer">1031</id>
+    <project>Sample Project</project>
+    <story>More power to shields</story>
+    <description>James Kirk accepted &quot;More power to shields&quot;</description>
+    <author>James Kirk </author>
+    <when>06/01/2009 08:22 AM</when>
+  </activity>
+  <activity>
+    <id type="integer">1030</id>
+    <project>Another Sample Project</project>
+    <story>Warp speed</story>
+    <description>Montgomery Scott rejected &quot;Warp speend&quot; with comments: &quot;Warp speed isn't working&quot;</description>
+    <author>Montgomery Scott</author>
+    <when>06/01/2009 12:22 AM</when>
+  </activity>
+</activities>

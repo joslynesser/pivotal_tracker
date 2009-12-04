@@ -16,6 +16,9 @@ Install the gem
 Create a PivotalTracker object with your API key:
   tracker = PivotalTracker.new('API_KEY')
   
+To use ssl:
+  tracker = PivotalTracker.new('API_KEY', :ssl => true)
+  
 Use any of the currently implemented methods and access them like access the resources returned.
 Notice that all data returned is parsed and built into Mash objects/arrays for you:
   projects = tracker.get_all_projects

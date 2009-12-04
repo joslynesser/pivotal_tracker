@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "pivotal_tracker"
-    gem.summary = %Q{Ruby wrapper for the Pivotal Tracker V2 API utilizing HTTParty and Crack XML parsing}
+    gem.summary = %Q{Ruby wrapper for the Pivotal Tracker V2 API}
     gem.email = "joslyn.esser@gmail.com"
     gem.homepage = "http://github.com/joslynesser/pivotal_tracker"
     gem.authors = ["Joslyn Esser"]

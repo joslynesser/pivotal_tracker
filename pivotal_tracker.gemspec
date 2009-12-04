@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pivotal_tracker}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joslyn Esser"]
-  s.date = %q{2009-11-06}
+  s.date = %q{2009-12-04}
   s.email = %q{joslyn.esser@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Ruby wrapper for the Pivotal Tracker V2 API utilizing HTTParty and Crack XML parsing}
+  s.summary = %q{Ruby wrapper for the Pivotal Tracker V2 API}
   s.test_files = [
     "spec/pivotal_tracker_spec.rb",
      "spec/spec_helper.rb"

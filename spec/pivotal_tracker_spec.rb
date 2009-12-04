@@ -11,6 +11,16 @@ describe PivotalTracker do
       @tracker = PivotalTracker.new('12345')
       PivotalTracker.default_options[:headers].should include('X-TrackerToken' => '12345')
     end
+
+    it "does not use SSL by default" do
+      @tracker = PivotalTracker.new('12345')
+      PivotalTracker.default_options[:base_uri].should match(/^http:/)
+    end
+
+    it "accepts an option for SSL" do
+      @tracker = PivotalTracker.new('12345', :ssl => true)
+      PivotalTracker.default_options[:base_uri].should match(/^https/)
+    end
   end
   
   describe "API" do

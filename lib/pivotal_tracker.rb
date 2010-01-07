@@ -86,6 +86,12 @@ class PivotalTracker
     raise_errors(response)
     parse_response(response, 'stories')
   end
+
+  def add_project_story(project_id,story)
+    response = self.class.post("/projects/#{project_id}/stories", :body => {:story => story})
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
     
   private
   
@@ -99,6 +105,8 @@ class PivotalTracker
           raise PivotalTracker::General, "(#{response.code}): #{response.message}"
         when 404
           raise PivotalTracker::ResourceNotFound, "(#{response.code}): #{response.message}"
+        when 422
+          raise PivotalTracker::ResourceInvalid, "(#{response.code}): #{response['errors'].inspect if response['errors']}"
         when 500
           raise PivotalTracker::InformPivotal, "Pivotal Tracker had an internal error. Please let them know. (#{response.code}): #{response.message}"
         when 502..503

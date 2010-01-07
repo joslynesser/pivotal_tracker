@@ -129,7 +129,9 @@ describe PivotalTracker do
       end
       
       it "should create a new story for a given project" do
-        pending
+        stub_post('/projects/1/stories', 'story.xml')
+        story = @tracker.add_project_story(1, {})
+        story.name.should == 'Fire torpedoes'
       end
     end
   end

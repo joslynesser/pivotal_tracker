@@ -112,8 +112,16 @@ describe PivotalTracker do
         stories.first.owned_by.should == 'Montgomery Scott'
       end
       
-      it "should get all stories for a project based on a given filter" do
-        pending
+      it "should get all stories for a project based on a given filter (Hash)" do
+        stub_get(%r[/projects/1/stories\?filter=type%3Afeature], 'stories.xml')
+        stories = @tracker.get_all_project_stories(1, :filter => {:type => 'feature'})
+        stories.first.owned_by.should == 'Montgomery Scott'
+      end
+
+      it "should get all stories for a project based on a given filter (String)" do
+        stub_get(%r[/projects/1/stories\?filter=type%3Afeature], 'stories.xml')
+        stories = @tracker.get_all_project_stories(1, :filter => 'type:feature')
+        stories.first.owned_by.should == 'Montgomery Scott'
       end
       
       it "should get all stories for a project paginated by a limit and offset" do

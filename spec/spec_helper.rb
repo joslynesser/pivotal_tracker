@@ -9,7 +9,7 @@ require 'fakeweb'
 require 'ruby-debug'
 
 Spec::Runner.configure do |config|
-  
+  config.before(:each) { FakeWeb.clean_registry }
 end
 
 FakeWeb.allow_net_connect = false
@@ -21,7 +21,11 @@ def fixture_file(filename)
 end
 
 def pivotal_tracker_url(url)
-  url =~ /^http/ ? url : "http://www.pivotaltracker.com/services/v2#{url}"
+  if String === url
+    url =~ /^http/ ? url : "http://www.pivotaltracker.com/services/v2#{url}"
+  else
+    url
+  end
 end
  
 def stub_get(url, filename, status=nil)

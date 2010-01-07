@@ -73,8 +73,16 @@ class PivotalTracker
     parse_response(response, 'iterations')
   end
   
-  def get_all_project_stories(project_id)
-    response = self.class.get("/projects/#{project_id}/stories")
+  def get_all_project_stories(project_id,query={})
+    filter = query.delete(:filter)
+
+    if filter && Hash === filter
+      filter = filter.inject([]) {|f,(key,value)| f << "#{key}:#{value}"}.join(' ')
+    end
+
+    query[:filter] = URI.escape(filter) if filter
+
+    response = self.class.get("/projects/#{project_id}/stories", :query => query)
     raise_errors(response)
     parse_response(response, 'stories')
   end

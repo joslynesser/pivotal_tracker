@@ -133,6 +133,12 @@ describe PivotalTracker do
         story = @tracker.add_project_story(1, {})
         story.name.should == 'Fire torpedoes'
       end
+
+      it "should create a new note for a given project and story" do
+        stub_post('/projects/1234/stories/5678/notes', 'note.xml')
+        note = @tracker.add_project_story_note(1234,5678,'new note via API')
+        note.text.should == 'new note via API'
+      end
     end
   end
   

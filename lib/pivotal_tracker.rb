@@ -93,6 +93,15 @@ class PivotalTracker
     parse_response(response, 'story')
   end
 
+  def update_project_story(project_id, story_id, story)
+    body = story.to_xml(:root => 'story', :skip_instruct => true, :indent => 0)
+    headers = self.class.headers.update('Content-Type' => 'application/xml')
+
+    response = self.class.put("/projects/#{project_id}/stories/#{story_id}", :headers => headers, :body => body)
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
+
   def add_project_story_note(project_id, story_id, text)
     response = self.class.post("/projects/#{project_id}/stories/#{story_id}/notes", :body => {:note => {:text => text}})
     raise_errors(response)
@@ -102,6 +111,9 @@ class PivotalTracker
   private
   
     def raise_errors(response)
+      errors = ''
+      errors = response['errors'].inspect if response['errors']
+
       case response.code.to_i
         when 400
           raise PivotalTracker::BadRequest.new(response), "(#{response.code}): #{response.message} - #{response['message'] if response}"
@@ -114,7 +126,7 @@ class PivotalTracker
         when 422
           raise PivotalTracker::ResourceInvalid, "(#{response.code}): #{response['errors'].inspect if response['errors']}"
         when 500
-          raise PivotalTracker::InformPivotal, "Pivotal Tracker had an internal error. Please let them know. (#{response.code}): #{response.message}"
+          raise PivotalTracker::InformPivotal, "Pivotal Tracker had an internal error. Please let them know. (#{response.code}): #{response.message}, #{errors}"
         when 502..503
           raise PivotalTracker::Unavailable, "(#{response.code}): #{response.message}"
       end

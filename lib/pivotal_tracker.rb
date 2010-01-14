@@ -102,6 +102,12 @@ class PivotalTracker
     parse_response(response, 'story')
   end
 
+  def delete_story(project_id,story_id)
+    response = self.class.delete("/projects/#{project_id}/stories/#{story_id}")
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
+
   def add_project_story_note(project_id, story_id, text)
     response = self.class.post("/projects/#{project_id}/stories/#{story_id}/notes", :body => {:note => {:text => text}})
     raise_errors(response)

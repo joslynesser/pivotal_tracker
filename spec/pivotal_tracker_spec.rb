@@ -140,6 +140,12 @@ describe PivotalTracker do
         story.name.should == 'Fire torpedoes'
       end
 
+      it "removes an existing story for a given project" do
+        stub_delete('/projects1/stories/12', 'story.xml')
+        story = @tracker.delete_story(1,12)
+        story.name.should == 'Fire torpedoes'
+      end
+
       it "should create a new note for a given project and story" do
         stub_post('/projects/1234/stories/5678/notes', 'note.xml')
         note = @tracker.add_project_story_note(1234,5678,'new note via API')

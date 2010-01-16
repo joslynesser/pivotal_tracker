@@ -93,8 +93,9 @@ class PivotalTracker
     parse_response(response, 'story')
   end
 
+  # XXX activesupport dependency has crept in... hmm
   def update_project_story(project_id, story_id, story)
-    body = story.to_xml(:root => 'story', :skip_instruct => true, :indent => 0)
+    body = story.to_xml(:root => 'story', :skip_instruct => true, :indent => 0).tapp
     headers = self.class.headers.update('Content-Type' => 'application/xml')
 
     response = self.class.put("/projects/#{project_id}/stories/#{story_id}", :headers => headers, :body => body)
@@ -108,15 +109,27 @@ class PivotalTracker
     parse_response(response, 'story')
   end
 
-  def add_project_story_note(project_id, story_id, text)
-    response = self.class.post("/projects/#{project_id}/stories/#{story_id}/notes", :body => {:note => {:text => text}})
+  def add_note(project_id, story_id, text)
+    body = request_xml('note', :text => text).tapp
+    
+    response = self.class.post("/projects/#{project_id}/stories/#{story_id}/notes", :body => body, :headers => xml_headers)
     raise_errors(response)
     parse_response(response, 'note')
   end
     
   private
+
+    def request_xml(root_tag,tree)
+      tree.to_xml(:root => root_tag, :skip_instruct => true, :indent => 0)
+    end
+
+    def xml_headers
+      self.class.headers.update('Content-Type' => 'application/xml')
+    end
   
     def raise_errors(response)
+      response.body.tapp
+
       errors = ''
       errors = response['errors'].inspect if response['errors']
 

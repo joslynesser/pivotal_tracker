@@ -13,8 +13,8 @@ class PivotalTracker
     self.class.base_uri "http#{'s' if use_ssl}://www.pivotaltracker.com/services/v3"
   end
   
-  def get_all_activities
-    response = self.class.get("/activities")
+  def get_all_activities(options = {})
+    response = self.class.get("/activities", :query => options)
     raise_errors(response)
     parse_response(response, 'activities')
   end

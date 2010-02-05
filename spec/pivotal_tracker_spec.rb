@@ -35,6 +35,12 @@ describe PivotalTracker do
         activities.first.description.should == "James Kirk accepted \"More power to shields\""
       end
       
+      it "should filter recent activities" do
+        stub_get('/activities?newer_than_version=170', 'activities.xml')
+        activities = @tracker.get_all_activities(:newer_than_version => 170)
+        activities.first.description.should == "James Kirk accepted \"More power to shields\""
+      end
+      
       it "should get all recent activities for a given project" do
         stub_get('/projects/1/activities', 'activities.xml')
         activities = @tracker.get_all_project_activities(1)

@@ -78,6 +78,12 @@ class PivotalTracker
     raise_errors(response)
     parse_response(response, 'stories')
   end
+  
+  def move_project_story(project_id, story_id, direction, target_story_id)
+    response = self.class.post("/projects/#{project_id}/stories/#{story_id}/moves", :body => {:move => {:move => direction, :target => target_story_id}})
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
     
   private
   

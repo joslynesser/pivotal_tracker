@@ -143,6 +143,12 @@ describe PivotalTracker do
       it "should create a new story for a given project" do
         pending
       end
+      
+      it "should move a story before or after another story" do
+        stub_post('/projects/1/stories/1234/moves', 'story.xml')
+        story = @tracker.move_project_story(1, 1234, "after", 5678)
+        story.name.should == 'Fire torpedoes'
+      end
     end
   end
   

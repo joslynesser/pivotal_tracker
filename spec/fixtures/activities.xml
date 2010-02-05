@@ -2,18 +2,38 @@
 <activities type="array">
   <activity>
     <id type="integer">1031</id>
-    <project>Sample Project</project>
-    <story>More power to shields</story>
+    <version type="integer">175</version>
+    <event_type>story_update</event_type>
+    <occurred_at type="datetime">2009/12/14 14:12:09 PST</occurred_at>
+    <author>James Kirk</author>
+    <project_id type="integer">26</project_id>
     <description>James Kirk accepted &quot;More power to shields&quot;</description>
-    <author>James Kirk </author>
-    <when>06/01/2009 08:22 AM</when>
+    <stories>
+      <story>
+        <id type="integer">109</id>
+        <url>https://www.pivotaltracker.com/services/v3/projects/26/stories/109</url>
+        <lighthouse_id>43</lighthouse_id>
+        <lighthouse_url>http://mylighthouseapp.com/projects/100/tickets/43</lighthouse_url>
+        <accepted_at type="datetime">2009/12/14 22:12:09 UTC</accepted_at>
+        <current_state>accepted</current_state>
+      </story>
+    </stories>
   </activity>
   <activity>
     <id type="integer">1030</id>
-    <project>Another Sample Project</project>
-    <story>Warp speed</story>
-    <description>Montgomery Scott rejected &quot;Warp speend&quot; with comments: &quot;Warp speed isn't working&quot;</description>
+    <version type="integer">175</version>
+    <event_type>story_update</event_type>
+    <occurred_at type="datetime">2009/12/14 14:12:09 PST</occurred_at>
     <author>Montgomery Scott</author>
-    <when>06/01/2009 12:22 AM</when>
+    <project_id type="integer">28</project_id>
+    <description>Montgomery Scott rejected &quot;Warp speed&quot; with comments: &quot;Warp speed isn't working&quot;</description>
+    <stories>
+      <story>
+        <id type="integer">119</id>
+        <url>https://www.pivotaltracker.com/services/v3/projects/28/stories/119</url>
+        <accepted_at type="datetime">2009/12/14 22:12:09 UTC</accepted_at>
+        <current_state>rejected</current_state>
+      </story>
+    </stories>
   </activity>
 </activities>

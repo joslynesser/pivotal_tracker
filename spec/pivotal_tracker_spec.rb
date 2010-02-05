@@ -65,13 +65,13 @@ describe PivotalTracker do
       it "should get a project" do
         stub_get("/projects/27", 'project.xml')
         project = @tracker.get_project(27)
-        project.name.should == 'Cardassian War Plans'
+        project.name.should == 'Sample Project'
       end
       
       it "should create a project" do
         stub_post('/projects', 'project.xml')
         project = @tracker.create_project('Cardassian War Plans')
-        project.name.should == 'Cardassian War Plans'
+        project.name.should == 'Sample Project'
       end
     end
   

@@ -73,6 +73,12 @@ describe PivotalTracker do
         project = @tracker.create_project('Cardassian War Plans')
         project.name.should == 'Sample Project'
       end
+      
+      it "should create a project with options" do
+        stub_post('/projects', 'project.xml')
+        project = @tracker.create_project('Cardassian War Plans', :no_owner => true)
+        project.name.should == 'Sample Project'
+      end
     end
   
     describe "Memberships" do

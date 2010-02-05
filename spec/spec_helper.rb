@@ -21,7 +21,7 @@ def fixture_file(filename)
 end
 
 def pivotal_tracker_url(url)
-  url =~ /^http/ ? url : "http://www.pivotaltracker.com/services/v2#{url}"
+  url =~ /^http/ ? url : "http://www.pivotaltracker.com/services/v3#{url}"
 end
  
 def stub_get(url, filename, status=nil)

@@ -10,7 +10,7 @@ class PivotalTracker
   def initialize(api_token, options = {})
     self.class.headers 'X-TrackerToken' => api_token
     use_ssl = options.delete(:ssl)
-    self.class.base_uri "http#{'s' if use_ssl}://www.pivotaltracker.com/services/v2"
+    self.class.base_uri "http#{'s' if use_ssl}://www.pivotaltracker.com/services/v3"
   end
   
   def get_all_activities

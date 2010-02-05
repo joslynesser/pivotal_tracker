@@ -67,8 +67,8 @@ class PivotalTracker
     parse_response(response, 'membership')
   end
   
-  def get_all_project_iterations(project_id)
-    response = self.class.get("/projects/#{project_id}/iterations")
+  def get_all_project_iterations(project_id, options = {})
+    response = self.class.get("/projects/#{project_id}/iterations", :query => options)
     raise_errors(response)
     parse_response(response, 'iterations')
   end

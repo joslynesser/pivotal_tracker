@@ -119,7 +119,9 @@ describe PivotalTracker do
       end
       
       it "should get iterations by limit and offset" do
-        pending
+        stub_get('/projects/1/iterations?offset=1&limit=2', 'iterations.xml')
+        iterations = @tracker.get_all_project_iterations(1, :offset => 1, :limit => 2)
+        iterations.first.stories.first.story_type.should == 'feature'
       end
     end
     

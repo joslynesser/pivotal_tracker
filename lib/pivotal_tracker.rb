@@ -19,8 +19,8 @@ class PivotalTracker
     parse_response(response, 'activities')
   end
   
-  def get_all_project_activities(project_id)
-    response = self.class.get("/projects/#{project_id}/activities")
+  def get_all_project_activities(project_id, options = {})
+    response = self.class.get("/projects/#{project_id}/activities", :query => options)
     raise_errors(response)
     parse_response(response, 'activities')
   end

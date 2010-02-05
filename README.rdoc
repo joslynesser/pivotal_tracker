@@ -1,6 +1,6 @@
 = pivotal_tracker
 
-This is a simple ruby wrapper for the Pivotal Tracker V2 API utilizing HTTParty and Crack::XML.
+This is a simple ruby wrapper for the Pivotal Tracker V3 API utilizing HTTParty and Crack::XML.
 
 == Setup
 
@@ -27,8 +27,8 @@ Notice that all data returned is parsed and built into Mash objects/arrays for y
   
 == Currently implemented methods (More to come!)
 
-* get_all_activities 
-* get_all_project_activities(project_id)
+* get_all_activities(options = {}) 
+* get_all_project_activities(project_id, options = {})
 * get_all_projects
 * get_project(project_id)
 * create_project(name, options = {})
@@ -36,8 +36,18 @@ Notice that all data returned is parsed and built into Mash objects/arrays for y
 * get_project_membership(project_id, membership_id)
 * add_project_membership(project_id, role, email, options = {})
 * remove_project_membership(project_id, membership_id)
-* get_all_project_iterations(project_id)
-* get_all_project_stories(project_id)
+* get_all_project_iterations(project_id, options = {})
+* get_all_project_stories(project_id, options = {})
+  * Filter by passing in a filter hash: 
+    {:filter => {:type => "bug", :id => "1,2,5"}}
+  * Read more on filtering here: http://www.pivotaltracker.com/help#howcanasearchberefined
+* add_project_story(project_id, story)
+* update_project_story(project_id, story_id, story)
+* delete_project_story(project_id, story_id)
+* add_project_story_note(project_id, story_id, text)
+* move_project_story(project_id, story_id, direction, target_story_id)
+  * direction can be either "before" or "after"
+
 
 == Note on Patches/Pull Requests
  

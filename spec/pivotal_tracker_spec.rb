@@ -132,16 +132,40 @@ describe PivotalTracker do
         stories.first.owned_by.should == 'Montgomery Scott'
       end
       
-      it "should get all stories for a project based on a given filter" do
-        pending
+      it "should get all stories for a project based on a given filter hash" do
+        stub_get("/projects/1/stories\?filter=type%3Afeature", 'stories.xml')
+        stories = @tracker.get_all_project_stories(1, :filter => {:type => 'feature'})
+        stories.first.owned_by.should == 'Montgomery Scott'
       end
       
       it "should get all stories for a project paginated by a limit and offset" do
-        pending
+        stub_get("/projects/1/stories\?limit=10&offset=20", 'stories.xml')
+        stories = @tracker.get_all_project_stories(1, :limit => 10, :offset => 20)
+        stories.first.owned_by.should == 'Montgomery Scott'
       end
       
       it "should create a new story for a given project" do
-        pending
+        stub_post('/projects/1/stories', 'story.xml')
+        story = @tracker.add_project_story(1, {})
+        story.name.should == 'Fire torpedoes'
+      end
+
+      it "should update an existing story for a given project and story" do
+        stub_put('/projects/1/stories/12', 'story.xml')
+        story = @tracker.update_project_story(1, 12, :name => "Fire torpedoes")
+        story.name.should == 'Fire torpedoes'
+      end
+
+      it "removes an existing story for a given project" do
+        stub_delete('/projects/1/stories/12', 'story.xml')
+        story = @tracker.delete_project_story(1, 12)
+        story.name.should == 'Fire torpedoes'
+      end
+
+      it "should create a new note for a given project and story" do
+        stub_post('/projects/1234/stories/5678/notes', 'note.xml')
+        note = @tracker.add_project_story_note(1234, 5678, 'new note via API')
+        note.text.should == 'new note via API'
       end
       
       it "should move a story before or after another story" do

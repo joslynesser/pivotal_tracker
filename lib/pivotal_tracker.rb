@@ -73,10 +73,38 @@ class PivotalTracker
     parse_response(response, 'iterations')
   end
   
-  def get_all_project_stories(project_id)
-    response = self.class.get("/projects/#{project_id}/stories")
+  def get_all_project_stories(project_id, options = {})
+    if options[:filter]
+      options[:filter] = options[:filter].inject([]) {|f,(key,value)| f << "#{key}:#{value}"}.join(' ')
+    end
+
+    response = self.class.get("/projects/#{project_id}/stories", :query => options)
     raise_errors(response)
     parse_response(response, 'stories')
+  end
+
+  def add_project_story(project_id, story)
+    response = self.class.post("/projects/#{project_id}/stories", :body => {:story => story})
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
+
+  def update_project_story(project_id, story_id, story)
+    response = self.class.put("/projects/#{project_id}/stories/#{story_id}", :body => {:story => story})
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
+
+  def delete_project_story(project_id, story_id)
+    response = self.class.delete("/projects/#{project_id}/stories/#{story_id}")
+    raise_errors(response)
+    parse_response(response, 'story')
+  end
+
+  def add_project_story_note(project_id, story_id, text)
+    response = self.class.post("/projects/#{project_id}/stories/#{story_id}/notes", :body => {:note => {:text => text}})
+    raise_errors(response)
+    parse_response(response, 'note')
   end
   
   def move_project_story(project_id, story_id, direction, target_story_id)
@@ -97,8 +125,10 @@ class PivotalTracker
           raise PivotalTracker::General, "(#{response.code}): #{response.message}"
         when 404
           raise PivotalTracker::ResourceNotFound, "(#{response.code}): #{response.message}"
+        when 422
+          raise PivotalTracker::ResourceInvalid, "(#{response.code}): #{response['errors'].inspect if response['errors']}"
         when 500
-          raise PivotalTracker::InformPivotal, "Pivotal Tracker had an internal error. Please let them know. (#{response.code}): #{response.message}"
+          raise PivotalTracker::InformPivotal, "Pivotal Tracker had an internal error. Please let them know. (#{response.code}): #{response.message} - #{response['message'] if response}"
         when 502..503
           raise PivotalTracker::Unavailable, "(#{response.code}): #{response.message}"
       end

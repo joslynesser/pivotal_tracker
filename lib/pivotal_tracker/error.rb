@@ -14,3 +14,4 @@ class PivotalTracker::General           < StandardError; end
 class PivotalTracker::Unavailable       < StandardError; end
 class PivotalTracker::InformPivotal     < StandardError; end
 class PivotalTracker::ResourceNotFound  < StandardError; end
+class PivotalTracker::ResourceInvalid  < StandardError; end

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <id type="integer">42</id>
+  <text>new note via API</text>
+  <author>Spock (young)</author>
+  <noted_at type="datetime">2009/01/16 18:53:51 UTC</noted_at>
+</note>

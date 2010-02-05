@@ -9,7 +9,7 @@ require 'fakeweb'
 require 'ruby-debug'
 
 Spec::Runner.configure do |config|
-  
+  config.before(:each) { FakeWeb.clean_registry }
 end
 
 FakeWeb.allow_net_connect = false

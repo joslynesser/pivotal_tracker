@@ -75,7 +75,7 @@ class PivotalTracker
   
   def get_all_project_stories(project_id, options = {})
     if options[:filter]
-      options[:filter] = options[:filter].inject([]) {|f,(key,value)| f << "#{key}:#{value}"}.join(' ')
+      options[:filter] = options[:filter].map {|k,v| v ? "#{k}:#{v}" : k }.join(' ')
     end
 
     response = self.class.get("/projects/#{project_id}/stories", :query => options)
